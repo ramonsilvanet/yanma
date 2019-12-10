@@ -11,10 +11,6 @@ Aplicação hipotética de aluguel de bikes compartilhadas. Um usuário cadastra
 
 ## Casos de Uso
 
-![Yanma Logo](img/bike.png)
-
----
-
 ### Usuários
 #### Cadastro de Usuários
 
