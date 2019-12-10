@@ -2,7 +2,8 @@
 
 ![Bike](img/bike.jpeg)
 
-### Usuários
+## Usuários
+
 #### Cadastro de Usuários
 
 Um usuário pode se cadastrar na aplicação utilizando um nome e uma email. O usuário deve possuir uma senha para a sua conta.

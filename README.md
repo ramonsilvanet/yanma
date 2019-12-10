@@ -12,3 +12,8 @@ Aplicação hipotética de aluguel de bikes compartilhadas. Um usuário cadastra
 ### Casos de uso
 
 os casos de uso podem ser vistos [aqui](documentation/use_cases.md).
+
+
+## Arquitetura
+
+![Arquitetura](documentation/img/yanma_monolito.png)
