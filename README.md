@@ -1,4 +1,4 @@
-# Yet ANother Monolithic Applicattion
+# YANMA - Yet ANother Monolithic Applicattion
 
 ![Yanma Logo](img/logo.png)
 *#193 - Yanma : [Bug/Flying]. YANMA is capable of seeing 360 degrees without having to move its eyes. It is a great flier that is adept at making sudden stops and turning midair. This POKéMON uses its flying ability to quickly chase down targeted prey.*
