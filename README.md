@@ -9,3 +9,6 @@ Aplicação Monolítica para apresentação sobre quebra de Monolítos em Micros
 
 Aplicação hipotética de aluguel de bikes compartilhadas. Um usuário cadastrado pode selecionar uma bicicleta que está em uma estção e utilizar um código fornecido pela aplciação para destravá-la e sair com ela. Ao final da viagem, o usuário deve devolvê-la a qualquer estação.
 
+### Casos de uso
+
+os casos de uso podem ser vistos [aqui](documentation/use_cases.md).
