@@ -1,0 +1,20 @@
+version: '3'
+services:
+  db:
+    image: postgres:9.6-alpine
+    volumes:
+      - postgres96:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: yanma123
+      POSTGRES_USER: yanma_db   
+  web:    
+    build: .
+    container_name: yanma_service   
+    volumes:
+      - .:/app 
+    ports:
+      - 3000:3000
+    depends_on:
+      - db        
+volumes:
+  postgres96:

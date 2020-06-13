@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode  
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: yanma_db
+  password: yanma123
+
+development:
+  <<: *default
+  host: db
+  database: yanma_development
+  
+test:
+  <<: *default
+  host: db
+  database: yanma_test
+
+production:
+  <<: *default
+  database: yanma_production
+  username: yanma
+  password: <%= ENV['YANMA_DATABASE_PASSWORD'] %>
