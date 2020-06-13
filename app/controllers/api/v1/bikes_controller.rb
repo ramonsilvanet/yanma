@@ -3,7 +3,12 @@ module Api
     class BikesController < ApplicationController
 
       def show
-        head :not_found
+        find_bike = Bikes::FindBike.new        
+        
+        find_bike.on(:find_bike_success) { |bike| render json: { bike_id: bike }, status: :ok }
+        find_bike.on(:find_bike_fail)     { head :not_found }
+
+        find_bike.call bike_id
       end
 
       def unlock
@@ -27,6 +32,10 @@ module Api
        ) 
       end
       
+
+      def bike_id
+        permitted_params[:bike_id]
+      end
     end
   end
 end
