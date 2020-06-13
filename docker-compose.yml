@@ -9,7 +9,9 @@ services:
       POSTGRES_USER: yanma_db   
   web:    
     build: .
-    container_name: yanma_service    
+    container_name: yanma_service   
+    volumes:
+      - .:/app 
     ports:
       - 3000:3000
     depends_on:

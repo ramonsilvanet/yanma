@@ -1,20 +1,20 @@
-FROM ruby:2.7-alpine
+FROM ruby:2.7.0-slim
 
-RUN apk update \
-&& apk upgrade \
-&& apk add --update --no-cache \
-build-base curl-dev git postgresql-dev \
-yaml-dev zlib-dev tzdata
+RUN apt-get update && apt-get install -y \
+  curl \
+  build-essential \
+  libpq-dev \
+  postgresql-client
+  
+RUN mkdir /app
+WORKDIR /app
 
-WORKDIR /usr/src/app
-
-ENV RAILS_ENV=development
-
-COPY Gemfile* ./
-
-RUN bundle install
+EXPOSE 3000
 
 COPY . .
+
+RUN gem update bundler
+RUN bundle install --jobs 5 --retry 3
 
 ENTRYPOINT ["./entrypoint.sh"]
 
