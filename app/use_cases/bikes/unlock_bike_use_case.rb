@@ -1,5 +1,5 @@
 module Bikes
-  class UnlockBikePublisherService
+  class UnlockBikePublisherUseCase
     include Wisper::Publisher
 
     def call(user_id, station_id, bike_id, password)

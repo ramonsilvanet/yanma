@@ -6,20 +6,9 @@ module Api
         find_bike = Bikes::FindBike.new        
         
         find_bike.on(:find_bike_success) { |bike| render json: { bike_id: bike }, status: :ok }
-        find_bike.on(:find_bike_fail)     { head :not_found }
+        find_bike.on(:find_bike_fail)    { head :not_found }
 
         find_bike.call bike_id
-      end
-
-      def unlock
-        head :ok
-      end
-
-      def lock
-        head :unauthorized
-      end
-
-      def maintenance
       end
 
       private
