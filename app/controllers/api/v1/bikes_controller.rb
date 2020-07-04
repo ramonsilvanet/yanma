@@ -1,14 +1,17 @@
+require 'services/infra/logger'
+require 'use_cases/bikes/find_bike'
+
 module Api
   module V1
     class BikesController < ApplicationController
 
-      def show
-        find_bike = Bikes::FindBike.new        
-        
-        find_bike.on(:find_bike_success) { |bike| render json: { bike_id: bike }, status: :ok }
-        find_bike.on(:find_bike_fail)    { head :not_found }
+      def show                
+        find_bike_use_case = UseCases::Bikes::FindBike.new        
 
-        find_bike.call bike_id
+        find_bike_use_case.on(:find_bike_success) { |bike| render json: bike, status: :ok }
+        find_bike_use_case.on(:find_bike_fail)    { head :not_found }
+        
+        find_bike_use_case.call(bike_id)
       end
 
       private
@@ -21,10 +24,10 @@ module Api
        ) 
       end
       
-
       def bike_id
         permitted_params[:bike_id]
       end
+
     end
   end
 end

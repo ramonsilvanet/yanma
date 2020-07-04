@@ -1,5 +1,5 @@
 module Infra
-  class Logger
+  class RailsLoggerAdapter
     class << self
       def info(msg)
         Rails.logger.info(msg)
@@ -16,7 +16,6 @@ module Infra
       def error(msg)
         Rails.logger.error(msg)
       end
-
     end
   end
 end

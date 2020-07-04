@@ -1,6 +1,6 @@
 module Api
   module V1
-    class BikesController < ApplicationController
+    class StationsController < ApplicationController
 
       def generate_password
         password_service = Stations::GenerateUnlockPassword.new(station_id, user_id)
@@ -16,8 +16,8 @@ module Api
 
       def permitted_params
         params.permit(
-          station_id:,
-          user_id:
+          :station_id,
+          :user_id
         )
       end
 
