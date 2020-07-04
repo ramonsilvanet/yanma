@@ -35,8 +35,7 @@ module Yanma
     config.api_only = true
 
     config.autoload_paths += %W[  
-      #{config.root}/app/services         
-      #{config.root}/app/use_cases  
+      #{config.root}/app/services               
       #{config.root}/app/repositories     
     ]
   end
