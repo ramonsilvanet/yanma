@@ -11,7 +11,7 @@ module UseCases
           bike = Repositories::BikeRepository.find_by(id: bike_id)          
           broadcast(:find_bike_success, bike)           
         rescue => exception     
-          info("An Error occoured #{exception}") 
+          Services::Infra::Logger.info("An Error occoured #{exception}") 
           broadcast(:find_bike_fail)        
       end            
     end

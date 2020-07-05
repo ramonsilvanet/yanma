@@ -1,7 +1,7 @@
 module Repositories
   class BikeActiveRecordRepository
     def initialize
-      debug("BikeReposiotry::Database initialize")
+      debug("BikeActiveRecordRepository initialize")
       @model = Bike
     end
 

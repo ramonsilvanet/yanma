@@ -8,7 +8,7 @@ module Repositories
       end
 
       def repo
-        @@repo ||= Repositories::BikeActiveRecordRepository.new
+        @@repo ||= RepositoryRegistry.for(:bikes)
       end
 
       def find_by(id:)                
