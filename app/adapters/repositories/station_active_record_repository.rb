@@ -1,7 +1,8 @@
 module Repositories
   class StationActiveRecordRepository
-    def initialize
-      Services::Infra::Logger.debug("StationActiveRecordRepository initialize")
+    include Services::Infra::Logger
+
+    def initialize      
       @model = Station
     end
   end
