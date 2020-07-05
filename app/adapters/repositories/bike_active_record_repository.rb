@@ -2,11 +2,11 @@ module Repositories
   class BikeActiveRecordRepository
     include Services::Infra::Logger
 
-    def initialize      
+    def initialize
       @model = Bike
     end
 
-    def find_by_id(id)      
+    def find_by_id(id)
       @model.find(id)
     end
 
