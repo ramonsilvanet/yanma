@@ -1,4 +1,3 @@
-require 'services/infra/logger'
 require 'use_cases/bikes/find_bike'
 
 module Api
