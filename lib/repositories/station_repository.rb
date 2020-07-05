@@ -1,19 +1,19 @@
 module Repositories
-  class BikeRepository
+  class StationRepository
 
     def initialize(repository)
       @repository = repository
     end
 
-    def find_bike_by(id:)
+    def find_station_by(id:)
       @repository.find_by_id(id)
     end
 
-    def all_bikes
+    def all_stations
       @repository.all
     end
 
-    def count_bikes
+    def count_stations
       @repository.count
     end
 
