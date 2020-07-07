@@ -4,6 +4,8 @@ class CreateUnlockPassword < ActiveRecord::Migration[6.0]
       t.references :station
       t.references :user
 
+      t.string :password
+
       t.timestamps
     end
   end

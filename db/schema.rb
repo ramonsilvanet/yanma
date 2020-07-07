@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 2020_06_19_000001) do
   create_table "unlock_passwords", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.bigint "station_id"
     t.bigint "user_id"
+    t.string "password"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["station_id"], name: "index_unlock_passwords_on_station_id"

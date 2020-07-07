@@ -5,8 +5,8 @@ module Repositories
       @repository = repository
     end
 
-    def find_station_by(id:)
-      @repository.find_by_id(id)
+    def find_station_by_id(id)
+      @repository.find_station_by_id(id)
     end
 
     def all_stations

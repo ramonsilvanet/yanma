@@ -9,9 +9,12 @@
 # Stations
 st = Station.create(name: 'Pallet Town', address: 'Oak St., 555 - Pallte Town', latitude: 56.4447, longitude: -22.4565)
 
-(1..8).to_a.each do |number|   
+(1..8).to_a.each do |number|
   st.slots.create(number: number)
-end 
+end
 
 # Bikes
 (1..5).to_a.each { Bike.create(model: 'BM-01') }
+
+#Users
+User.create(fullname: 'Ramon Ferreira Silva', email: 'rsilva@ramonsilva.net', password: '123456')
