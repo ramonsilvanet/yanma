@@ -15,9 +15,9 @@ module UseCases
 
           bike = @bike_repository.find_bike_by(id: bike_id)
           broadcast(:find_bike_success, bike)
-        rescue => exception
-          warn("Fail to find bike: #{exception}")
-          broadcast(:find_bike_fail)
+        # rescue => exception
+        #   warn("Fail to find bike: #{exception}")
+        #   broadcast(:find_bike_fail)
       end
     end
   end
