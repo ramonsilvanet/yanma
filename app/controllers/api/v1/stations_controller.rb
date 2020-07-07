@@ -7,9 +7,9 @@ module Api
       def generate_password
         password_use_case = UseCases::Stations::GenerateUnlockPassword.new
 
-        password_use_case.on(:generate_success)   { |password| render json: {password: password}, status: :ok }
-        password_use_case.on(:generate_forbidden) { head :forbidden }
-        password_use_case.on(:generate_fail)      { head :internal_server_error }
+        password_use_case.on(:generate_password_success)   { |password| render json: {password: password}, status: :ok }
+        password_use_case.on(:generate_password_forbidden) { head :forbidden }
+        password_use_case.on(:generate_password_fail)      { head :internal_server_error }
 
         password_use_case.call(user_id, station_id)
       end

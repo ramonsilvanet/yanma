@@ -15,27 +15,29 @@ module UseCases
       end
 
       def call(user_id, station_id)
-        broadcast(:generate_forbidden) if invalid_user?(user_id)
-        broadcast(:generate_forbidden) if invalid_station?(station_id)
-        broadcast(:generate_forbidden) if user_already_have_password_generated?(user_id)
+        return forbidden if invalid_user?(user_id)
+
+        return forbidden if invalid_station?(station_id)
+
+        return forbidden unless can_generate_new_password?(user_id)
 
         generated_password = save_password(user_id, station_id, Services::Password.generate_password)
-        broadcast(:generate_success, generated_password)
+        broadcast(:generate_password_success, generated_password)
 
       rescue => exception
         warn("Error when generate password. #{exception}")
-        broadcast(:generate_fail)
+        broadcast(:generate_password_fail)
       end
 
       private
 
       def invalid_user?(user_id)
-        user = @user_repository.find_user_by_id(user_id)
+        user = @user_repository.find_user_by(id: user_id)
         user.nil?
       end
 
       def invalid_station?(station_id)
-        station = @station_repository.find_station_by_id(station_id)
+        station = @station_repository.find_station_by(id: station_id)
         station.nil?
       end
 
@@ -44,13 +46,16 @@ module UseCases
         password
       end
 
-      def user_already_have_password_generated?(user_id)
-        password = @user_repository.find_last_password_for_user(user_id)
+      def can_generate_new_password?(user_id)
+        last_password = @user_repository.find_last_password_for_user(user_id)
 
-        return false if password.nil?
+        return true if last_password.nil?
 
-        password_validity = Time.at(password.created_at) + 30
-        password_validity > Time.now
+        last_password.expired?
+      end
+
+      def forbidden
+        broadcast(:generate_password_forbidden)
       end
     end
   end

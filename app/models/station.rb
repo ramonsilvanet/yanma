@@ -4,7 +4,7 @@ class Station < ApplicationRecord
 
   validates :address, :longitude, :latitude,  presence: true
   validates :latitude, :longitude, numericality: true
-  
+
   has_many :slots, dependent: :destroy
 
 end
