@@ -12,7 +12,7 @@ module Entities
 
 
     def expired?
-      password_validity = Time.at(@password.created_at) + THIRTY_SECONDS
+      password_validity = Time.at(@created_at) + THIRTY_SECONDS
       password_validity < Time.now
     end
 

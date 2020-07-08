@@ -25,8 +25,8 @@ ActiveRecord::Schema.define(version: 2020_06_19_000001) do
   end
 
   create_table "billing_history", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "billing_plan_id"
+    t.uuid "user_id", null: false
+    t.uuid "billing_plan_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["billing_plan_id"], name: "index_billing_history_on_billing_plan_id"
@@ -42,9 +42,9 @@ ActiveRecord::Schema.define(version: 2020_06_19_000001) do
   end
 
   create_table "history", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.bigint "station_id"
-    t.bigint "bike_id"
-    t.bigint "user_id"
+    t.uuid "station_id", null: false
+    t.uuid "bike_id", null: false
+    t.uuid "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["bike_id"], name: "index_history_on_bike_id"
@@ -53,8 +53,8 @@ ActiveRecord::Schema.define(version: 2020_06_19_000001) do
   end
 
   create_table "slots", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.bigint "station_id"
-    t.bigint "bike_id"
+    t.uuid "station_id", null: false
+    t.uuid "bike_id"
     t.integer "number", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -75,8 +75,8 @@ ActiveRecord::Schema.define(version: 2020_06_19_000001) do
   end
 
   create_table "unlock_passwords", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.bigint "station_id"
-    t.bigint "user_id"
+    t.uuid "station_id", null: false
+    t.uuid "user_id", null: false
     t.string "password"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -92,4 +92,12 @@ ActiveRecord::Schema.define(version: 2020_06_19_000001) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "billing_history", "billing_plans"
+  add_foreign_key "billing_history", "users"
+  add_foreign_key "history", "bikes"
+  add_foreign_key "history", "stations"
+  add_foreign_key "history", "users"
+  add_foreign_key "slots", "stations"
+  add_foreign_key "unlock_passwords", "stations"
+  add_foreign_key "unlock_passwords", "users"
 end

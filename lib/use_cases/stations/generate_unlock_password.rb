@@ -15,11 +15,11 @@ module UseCases
       end
 
       def call(user_id, station_id)
-        return forbidden if invalid_user?(user_id)
+        return broadcast(:generate_password_invalid_user) if invalid_user?(user_id)
 
-        return forbidden if invalid_station?(station_id)
+        return broadcast(:generate_password_invalid_station) if invalid_station?(station_id)
 
-        return forbidden unless can_generate_new_password?(user_id)
+        return broadcast(:generate_password_forbidden) unless can_generate_new_password?(user_id)
 
         generated_password = save_password(user_id, station_id, Services::Password.generate_password)
         broadcast(:generate_password_success, generated_password)
@@ -52,10 +52,6 @@ module UseCases
         return true if last_password.nil?
 
         last_password.expired?
-      end
-
-      def forbidden
-        broadcast(:generate_password_forbidden)
       end
     end
   end

@@ -4,7 +4,7 @@ class AddBikes < ActiveRecord::Migration[6.0]
     create_table :bikes, id: :uuid  do |t|
       t.string :model
       t.string :status, default: 'active'
-      
+
       t.timestamps
     end
   end

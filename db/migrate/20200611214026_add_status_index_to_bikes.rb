@@ -6,6 +6,6 @@ class AddStatusIndexToBikes < ActiveRecord::Migration[6.0]
 
   def down
     remove_index :bikes, :status
-    change_column :bikes, :status, :string, null: true    
+    change_column :bikes, :status, :string, null: true
   end
 end
