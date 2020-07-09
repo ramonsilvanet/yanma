@@ -1,6 +1,6 @@
 module Services
   module Infra
-    module Logger            
+    module Logger
       class << self
         attr_accessor :adapter
       end
@@ -19,7 +19,7 @@ module Services
 
       def error(msg)
         Logger.adapter.error(msg)
-      end      
+      end
     end
   end
 end
